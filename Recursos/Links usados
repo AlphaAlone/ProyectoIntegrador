@@ -6,3 +6,13 @@ https://www.youtube.com/watch?v=OwhuDgMdW3o
 
 Configuracion del conector de MySQL a C++ en Visual Studio:
 https://www.youtube.com/watch?v=yNniOHn9Xe0
+
+Archivos para instalar BOOST C++
+https://www.boost.org/users/history/version_1_74_0.html
+
+Instalacion de BOOST
+https://www.youtube.com/watch?v=5afpq2TkOHc (SEGUIR PASO A PASO EL VIDEO, De no tener las instacias y carpetas creadas HAY QUE CREARLAS)
+
+Correcion del error fatal C1083: no se puede abrir el archivo de inclusión: 'boost / config.hpp': no existe dicho archivo o directorio IMPORTANTE ARREGLARLO
+https://www.it-swarm-es.tech/es/c%2B%2B/error-fatal-c1083-no-se-puede-abrir-el-archivo-de-inclusion-boost-config.hpp-no-existe-dicho-archivo-o-directorio/969116044/
+
