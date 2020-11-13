@@ -1,16 +1,27 @@
-#include <mysql.h>
+#define _CRT_SECURE_NO_WARNINGS                                                                 //Este define es necesario para usar el sprintf, el cual sir ve para juntar la consulta a la base de datos.
+
 #include <iostream>
+#include <stdio.h>
+#include <Windows.h>
+#include <mysql.h>
+#include <mysqld_error.h>
+#include <cstring>
+#include <cstdio>
+#include <string>
 
 using namespace std;
+
 int qstate;
 string query;
-MYSQL* conn;
+MYSQL *conn;
 MYSQL_ROW row;
 MYSQL_RES *res;
+MYSQL_ROW_OFFSET pos;
 
 
 bool conection(); //Declaramos la funcion que usaremos para conectarnos a la base de datos.
 void consulta();
+void insertar();
 
 int main(){
     int opcion = 0;
@@ -26,6 +37,7 @@ int main(){
             cin >> opcion;
             switch (opcion) {
                 case 1:
+                    insertar();
                     break;
                 case 2:
                     consulta();
@@ -90,7 +102,7 @@ void consulta() {
             break;
     }
 
-    string query = "SELECT * FROM "+ cadena;                                                        // Declaro la consulta y concateno el nombre de la tabla previamente guardada
+    query = "SELECT * FROM "+ cadena;                                                        // Declaro la consulta y concateno el nombre de la tabla previamente guardada
     const char* q = query.c_str();                                                                  // Se hace un parse de String a Char
     qstate = mysql_query(conn, q);
     if (!qstate) {
@@ -110,4 +122,48 @@ void consulta() {
     }
 
 
+}
+
+//Funcuion para insertar datos a la base de datos.
+void insertar() {
+    char *consulta;
+    char id[4];
+    char direccion[45];
+    char colonia[45];
+    char estado[45];
+    char querry[] = "INSERT INTO semaforo (`id_Semaforo`, `Direcion`, `colonia`, `Estado`) VALUES (\'%s\', \'%s\', \'%s\', \'%s\');";
+
+    /*declaramos todo lo que usaremos para hacer la consulta a la base de datos.*/
+
+
+    cout << "=================\n";
+    cout << "/////////////////\n";
+    cout << "=================\n";
+    cout << "   **INSERTAR**  \n";
+    cout << "Ingrese id_Semaforo: (NOTA, VERIFIQUE QUE EL ID NO SE REPITA) ";
+    cin.get();
+    cin.getline(id,4,'\n');
+    cout << "Ingrese la direccion del semaforo: ";
+    cin.getline(direccion, 45, '\n');
+    cout << "Ingrese la colonia del semaforo: ";
+    cin.getline(colonia, 45, '\n');
+    cout << "Ingrese el estado del semaforo: ";
+    cin.getline(estado, 45, '\n');
+
+    cout << "Esros fueron sus valores ingresados: ['" << id << "', '" <<direccion << "', '" << colonia << "', '" << estado <<"']" << endl ;
+    
+    /*Ingresamos los datos y le mostramos al usuario lo que ingreso.*/
+
+
+    consulta = new char[strlen(querry)+strlen(id)+strlen(direccion)+strlen(colonia)+strlen(estado)];        // Hacemos la concatenacion del querry (la sentencia de la base de datos.)
+    sprintf(consulta, querry, id, direccion, colonia, estado);
+    /* 
+     * SPRINTF: Esta función es equivalente a fprintf, excepto que el argumento cadena especifica un array en el 
+     *          cual la salida generada es para ser escrita, en vez de un stream. Un carácter nulo es escrito al 
+     *          final de los caracteres escritos; no es contado como parte de la suma retornada. 
+     *          El comportamiento acerca de copiando entre objetos que se superponen no está definido.
+     */
+    mysql_query(conn, consulta);                                                                            // Enviamos la consulta a la base de datos
+    cout << "Esta fue su consulta: " << consulta << endl;                                                   // Le mostramos al usuario la consulta que hizo.
+    delete[] consulta;                                                                                      // Limpiamos la variable consulta, para fururas inserciones.
 }
