@@ -4,10 +4,10 @@ Integrantes del equipo:
 
 --> Gilberto Farrera López A191017
 --> René Eduardo Ortiz Mendéz A191012 
---> Edgar Emmanuel Pérez Esparza A191014
 --> Tomas Alexander Reyes Escobar A191405
 --> Jorge Arturo Flores Abraján A190549
 --> Adulfo Adhonai Alfaro Vazquez A190550
+--> Edgar Emmanuel Pérez Esparza A191014
 
 Es importante que este revisando constantemente la carpeta recursos.
 Al igual que es importante que en el archivo links usados de la carpeta recursos ingresen los links que les ayudaron para resolver problemas o de donde se guiaron.
