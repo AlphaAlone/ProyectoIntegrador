@@ -8,6 +8,7 @@
 #include <cstring>
 #include <cstdio>
 #include <string>
+#include <time.h>
 
 using namespace std;
 
@@ -126,7 +127,28 @@ void consulta() {
 
 //Funcuion para insertar datos a la base de datos.
 void insertar() {
-    char *consulta;
+    char* consulta;
+    char fecha[100];                                                                                // Un array de char o char* donde almacenaremos la cadena de caracteres resultante, El tamaño máximo de caracteres que podemos ocupar, es decir, el tamaño reservado para la variable anterior
+    struct tm *tm;
+        
+        /*
+         *  El formato en el que queremos presentar los datos, con algunas palabras 
+         *  clave que indicarán dónde va cada uno de los datos, los más importantes son:
+         *  %s : Número de segundos desde la época: 1 de Enero del 1970 a las 00:00
+         *  %d : Día del mes (del 01 al 31)
+         *  %m : Mes (del 01 al 12)
+         *  %Y : Año (con 4 cifras. Ej: 2012)
+         *  %y : Año (con 2 cifras. Ej : 12)
+         *  %H : Horas en formato 24h (de 00 a 23)
+         *  %I : Horas en formato 12h) (de 01 a 12)
+         *  %M : Minutos (de 00 a 59)
+         *  %S : Segundos (de 00 a 59)
+         *  %z : Huso horario (diferencia horaria con respecto a GMT)
+         *  %u : Día de la semana (del 1 al 7 donde 1 es Lunes)
+         *  %w : Día de la semana (del 0 al 6 donde 0 es Domingo)
+        */
+
+    time_t current_time;
     char id[4];
     char direccion[45];
     char colonia[45];
@@ -166,4 +188,14 @@ void insertar() {
     mysql_query(conn, consulta);                                                                            // Enviamos la consulta a la base de datos
     cout << "Esta fue su consulta: " << consulta << endl;                                                   // Le mostramos al usuario la consulta que hizo.
     delete[] consulta;                                                                                      // Limpiamos la variable consulta, para fururas inserciones.
+
+
+    /* 
+     * Solo agrego un codigo para 
+     * optener la fecha y la hora.
+    */
+    current_time = time(NULL);                                                                              // Devuelve el número de segundos transcurridos desde las 00:00:00 horas, GMT (Greenwich Mean Time), 1 de enero de 1970.
+    tm = localtime(&current_time);                                                                          // La función localtime() convertirá el tiempo en segundos desde la época señalada por el temporizador en un tiempo descompuesta, expresado como una hora local. La función corrige la zona horaria y cualquier ajuste de hora estacional. [CX] [Option Start] La información de zona horaria local se utiliza como si localtime() llame a tzset().
+    strftime(fecha, 100, "%Y-%m-%d %H:%M:%S", tm);                                                          // Concatenacion y generar el formato ingles de la fecha y hora para su futuro ingreso en la base de datos.
+    printf("hoy es: %s\n", fecha);                                                                          // Muestro la fecha en pantalla.
 }
