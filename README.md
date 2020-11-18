@@ -4,7 +4,7 @@ Integrantes del equipo:
 
 --> Gilberto Farrera López A191017
 --> René Eduardo Ortiz Mendéz A191012 
---> Tomas Alexander Reyes Escobar A191405
+--> Tomas Alexander Reyes Escobar A191405 
 --> Jorge Arturo Flores Abraján A190549
 --> Adulfo Adhonai Alfaro Vazquez A190550
 --> Edgar Emmanuel Pérez Esparza A191014
