@@ -23,3 +23,5 @@ http://c.conclase.net/librerias/?ansifun=sprintf                                
 https://stackoverflow.com/questions/36307469/this-function-or-variable-may-be-unsafe-to-disable-deprecation-use-crt-secure      Este explica el por que del uso del #define _CRT_SECURE_NO_WARNINGS- (LEER la respuesta con mas votos)
 http://c.conclase.net/librerias/?ansifun=strlen                                                                                 Este explica el uso del strlen
 
+Generar la hora: 
+https://poesiabinaria.net/2012/06/obtener-la-fecha-y-hora-formateada-en-c/
