@@ -1,0 +1,23 @@
+1.- tengo que combinar el semaforo con la informacion de cronometro digital.
+
+2.- cada dato que lance por cada 10 seg. o 15 seg.
+
+3.- el dato que se lanzara puede ser aleatorio.
+
+4.- el dato puede ser "rojo" o "verde", la condicion dependera del sistema aleatorio.
+
+5.- la condicion sera:  si los valores se quedan en rojo o verde, se lanzara el nuevo valor, aunque se repita, pero si el dato no se actualiza despues del tiempo asignado, el sistema esta con falla.
+
+6.- la simulacion del semaforo dependera de nuevas condiciones.
+
+7.- actualmente, estoy pensando cada codicion de dato "time" o "sensor"
+
+	1.rojo: cada valor o dato rojo solo se puede repetir como minimo de 2 veces en el sistemas, en caso de que esta ya este activa
+	2.amarillo: al igual que rojo, como minimo se repetira de manera constante de 2 a maximo 20 veces en el sistema, en caso de que se encentre activa "razon, el sistema de aleatorio de la da preferencia a datos neutrales.
+	3.verde: los datos en verde pueden reapetirse de la manera constante de 2 a infinito.
+
+8.- esta idea son para evitar un ciclo de combinacion basicas "verde, amarillo, rojo", con esto se tomara la medida necesaria para evitar este sucesion.
+
+9.-en caso de que suceda el punto 8, la simulacion de datos aleatoria estara fallando.
+
+
